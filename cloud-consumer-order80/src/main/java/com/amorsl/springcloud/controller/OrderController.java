@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/consumer/payment")
 public class OrderController {
 
-    private static final String URL_PREFIX = "http://localhost:8001";
+    private static final String URL_PREFIX = "http://cloud-payment-service";
 
     @Autowired
     private RestTemplate restTemplate;
