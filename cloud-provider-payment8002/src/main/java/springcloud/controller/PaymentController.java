@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import springcloud.service.PaymentService;
 
+import java.util.concurrent.TimeUnit;
+
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {
@@ -34,6 +36,12 @@ public class PaymentController {
         } else {
             return new CommonResult(444, "failed,port at" + serverPort, null);
         }
+    }
+
+    @GetMapping("/timeout")
+    public String getLongTimeServer() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+        return serverPort;
     }
 
 }

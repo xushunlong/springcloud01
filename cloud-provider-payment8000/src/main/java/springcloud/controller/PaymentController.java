@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import springcloud.service.PaymentService;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/payment")
@@ -53,4 +54,9 @@ public class PaymentController {
          return discoveryClient.getInstances("cloud-payment-service");
     }
 
+    @GetMapping("/timeout")
+    public String getLongTimeServer() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+        return serverPort;
+    }
 }
